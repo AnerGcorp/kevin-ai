@@ -2,3 +2,6 @@ toml
 flask
 fastlogging
 sqlmodel
+git
+requests
+netlify_py
