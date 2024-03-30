@@ -10,3 +10,4 @@ claude
 groq
 httpx
 ollama
+tiktoken
