@@ -7,3 +7,13 @@
 
 # project manager we need a project manager
 ## to follow the state of project
+
+# file system
+## simple code reader [v]
+## comperhensive code reader [x]
+
+# services
+## git
+## github
+## heroku
+## netlify
