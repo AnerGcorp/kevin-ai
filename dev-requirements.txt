@@ -7,3 +7,4 @@ requests
 netlify_py
 openai
 claude
+groq
