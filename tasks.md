@@ -13,7 +13,21 @@
 ## comperhensive code reader [x]
 
 # services
-## git
-## github
-## heroku
-## netlify
+## git [v]
+## github [v]
+## heroku [x]
+## netlify [v]
+
+# Agents
+## planner [v]
+## researcher [v]
+## formatter [v]
+## coder []
+## action []
+## internal_monologue []
+## answer []
+## runner []
+## feature []
+## patcher []
+## reporter []
+## decision []
