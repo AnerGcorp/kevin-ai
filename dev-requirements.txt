@@ -13,3 +13,5 @@ ollama
 tiktoken
 markdownify
 pdfminer
+markdown
+xhtml2pdf
