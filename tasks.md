@@ -25,7 +25,7 @@
 ## coder [v]
 ## action [v]
 ## internal_monologue [v]
-## answer []
+## answer [v]
 ## runner []
 ## feature []
 ## patcher []
