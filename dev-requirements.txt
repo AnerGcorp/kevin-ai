@@ -12,3 +12,4 @@ httpx
 ollama
 tiktoken
 markdownify
+pdfminer
