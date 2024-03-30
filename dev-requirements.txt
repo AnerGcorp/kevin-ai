@@ -11,3 +11,4 @@ groq
 httpx
 ollama
 tiktoken
+markdownify

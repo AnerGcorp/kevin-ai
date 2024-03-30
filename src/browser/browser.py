@@ -1,5 +1,6 @@
 import os
 from playwright.sync_api import sync_playwright, TimeoutError
+from markdownify import markdownify as md
 
 from src.config import Config
 from src.state import AgentState
@@ -41,3 +42,9 @@ class Browser:
         AgentState().add_to_current_state(project_name, new_state)        
 
         return path_to_save
+    
+    def get_html(self):
+        return self.page.content()
+
+    def get_markdown(self):
+        return md(self.page.content())
