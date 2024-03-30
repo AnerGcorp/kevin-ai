@@ -5,3 +5,4 @@ sqlmodel
 git
 requests
 netlify_py
+openai
