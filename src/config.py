@@ -16,11 +16,16 @@ class Config:
     def get_config(self):
         return self.config
     
-    def get_bing_api_key(self):
-        return environ.get("BING_API_KEY", self.config["API_KEYS"]["BING"])
-    
     def get_bing_api_endpoint(self):
         return environ.get("BING_API_ENDPOINT", self.config["API_ENDPOINTS"]["BING"])
+    
+    def get_ollama_api_endpoint(self):
+        return environ.get(
+            "OLLAMA_API_ENDPOINT", self.config["API_ENDPOINTS"]["OLLAMA"]
+        )
+    
+    def get_bing_api_key(self):
+        return environ.get("BING_API_KEY", self.config["API_KEYS"]["BING"])
 
     def get_claude_api_key(self):
         return environ.get("CLAUDE_API_KEY", self.config["API_KEYS"]["CLAUDE"])
@@ -69,6 +74,9 @@ class Config:
         self.config["API_ENDPOINTS"]["BING"] = endpoint
         self.save_config()
 
+    def set_ollama_api_endpoint(self, endpoint):
+        self.config["API_ENDPOINTS"]["OLLAMA"] = endpoint
+        self.save_config()
 
     def set_claude_api_key(self, key):
         self.config["API_KEYS"]["CLAUDE"] = key
