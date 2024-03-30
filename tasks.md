@@ -29,5 +29,5 @@
 ## feature [v]
 ## patcher [v]
 ## runner [v]
-## reporter []
+## reporter [v]
 ## decision []
