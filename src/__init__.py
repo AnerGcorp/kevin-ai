@@ -1,13 +1,28 @@
 import os
+import sys
 
 from src.config import Config
 from src.logger import Logger
+
+def initialize_cmd():
+    config = Config()
+    logger = Logger()
+    command_line_args = sys.argv[1:]
+    if '--websearch' in command_line_args:
+        index = command_line_args.index('--websearch')
+        websearch_value = command_line_args[index + 1]
+        if(websearch_value == 'bing' or websearch_value == 'google' or websearch_value == 'ddgs'):
+            config.set_web_search(websearch_value)
+        else:
+            return logger.error(f"Invalid websearch value parameter: {websearch_value}")
+    else:
+        logger.info("No --websearch argument provided. Using default duckduckgo search.")
 
 def initialize_kevin():
     config = Config()
     logger = Logger()
 
-    logger.info("Initializing kevin...")
+    logger.info("Initializing Kevin...")
     sqlite_db = config.get_sqlite_db()
     screenshots_dir = config.get_screenshots_dir()
     pdfs_dir = config.get_pdfs_dir()
@@ -20,3 +35,13 @@ def initialize_kevin():
     os.makedirs(pdfs_dir, exist_ok=True)
     os.makedirs(projects_dir, exist_ok=True)
     os.makedirs(logs_dir, exist_ok=True)
+
+    initialize_cmd()
+    logger.info(f"Using {config.get_web_search()} as default if not specified in the request.")
+
+    from src.bert.sentence import SentenceBert
+
+    logger.info("Loading sentence-transformer BERT models...")
+    prompt = "Light-weight keyword extraction excercise for BERT model loading.".strip()
+    SentenceBert(prompt).extract_keywords()
+    logger.info("BERT model loaded successfully.")
