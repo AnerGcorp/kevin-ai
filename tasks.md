@@ -27,7 +27,7 @@
 ## internal_monologue [v]
 ## answer [v]
 ## feature [v]
-## patcher []
+## patcher [v]
 ## runner []
 ## reporter []
 ## decision []
