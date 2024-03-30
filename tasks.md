@@ -30,4 +30,4 @@
 ## patcher [v]
 ## runner [v]
 ## reporter [v]
-## decision []
+## decision [v]
