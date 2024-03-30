@@ -28,6 +28,6 @@
 ## answer [v]
 ## feature [v]
 ## patcher [v]
-## runner []
+## runner [v]
 ## reporter []
 ## decision []
