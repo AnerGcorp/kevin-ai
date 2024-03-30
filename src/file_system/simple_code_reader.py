@@ -2,7 +2,7 @@ import os
 
 from src.config import Config
 
-class CodeReader:
+class SimpleCodeReader:
     def __init__(self, project_name: str):
         config = Config()
         project_path = config.get_projects_dir()
