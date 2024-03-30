@@ -24,6 +24,15 @@ class Config:
             "OLLAMA_API_ENDPOINT", self.config["API_ENDPOINTS"]["OLLAMA"]
         )
     
+    def get_google_search_api_endpoint(self):
+        return environ.get("GOOGLE_SEARCH_API_ENDPOINT", self.config["API_ENDPOINTS"]["GOOGLE_SEARCH"])
+    
+    def get_google_search_api_key(self):
+        return environ.get("GOOGLE_SEARCH_API_KEY", self.config["API_KEYS"]["GOOGLE_SEARCH"])
+
+    def get_google_search_engine_id(self):
+        return environ.get("GOOGLE_SEARCH_ENGINE_ID", self.config["API_KEYS"]["GOOGLE_SEARCH_ENGINE_ID"])
+
     def get_bing_api_key(self):
         return environ.get("BING_API_KEY", self.config["API_KEYS"]["BING"])
 
@@ -65,6 +74,18 @@ class Config:
 
     def get_logging_prompts(self):
         return self.config["LOGGING"]["LOG_PROMPTS"] == "true"
+    
+    def set_google_search_api_key(self, key):
+        self.config["API_KEYS"]["GOOGLE_SEARCH"] = key
+        self.save_config()
+
+    def set_google_search_engine_id(self, key):
+        self.config["API_KEYS"]["GOOGLE_SEARCH_ENGINE_ID"] = key
+        self.save_config()
+
+    def set_google_search_api_endpoint(self, endpoint):
+        self.config["API_ENDPOINTS"]["GOOGLE_SEARCH"] = endpoint
+        self.save_config()
 
     def set_bing_api_key(self, key):
         self.config["API_KEYS"]["BING"] = key

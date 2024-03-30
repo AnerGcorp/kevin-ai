@@ -7,6 +7,8 @@ LOGS_DIR = "logs"
 REPOS_DIR = "repos"
 
 [API_KEYS]
+GOOGLE_SEARCH = "<YOUR_GOOGLE_SEARCH_API_KEY>"
+GOOGLE_SEARCH_ENGINE_ID = "<YOUR_GOOGLE_SEARCH_ENGINE_ID>"
 BING = "<YOUR_BING_API_KEY>"
 CLAUDE = "<YOUR_CLAUDE_API_KEY>"
 NETLIFY = "<YOUR_NETLIFY_API_KEY>"
@@ -15,6 +17,7 @@ GEMINI = "<YOUR_GEMINI_API_KEY>"
 
 
 [API_ENDPOINTS]
+GOOGLE_SEARCH = "https://www.googleapis.com/customsearch/v1"
 BING = "https://api.bing.microsoft.com/v7.0/search"
 OLLAMA = "http://127.0.0.1:11434"
 
