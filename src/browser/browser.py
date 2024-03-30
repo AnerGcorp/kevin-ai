@@ -48,3 +48,14 @@ class Browser:
 
     def get_markdown(self):
         return md(self.page.content())
+    
+    def get_pdf(self):
+        pdfs_save_path = Config().get_pdfs_dir()
+        
+        page_metadata = self.page.evaluate("() => { return { url: document.location.href, title: document.title } }")
+        filename_to_save = f"{page_metadata['title']}.pdf"
+        save_path = os.path.join(pdfs_save_path, filename_to_save)
+        
+        self.page.pdf(path=save_path)        
+        
+        return save_path
