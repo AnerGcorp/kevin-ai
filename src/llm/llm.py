@@ -37,7 +37,7 @@ class Model(Enum):
     GROQ_GEMMA_7B_IT = ("GROQ GEMMA-7B-IT", "gemma-7b-it")
 
 
-logger = Logger(filename="devika_prompts.log")
+logger = Logger(filename="kevin_prompts.log")
 
 class LLM:
     def __init__(self, model_id: str = None):
