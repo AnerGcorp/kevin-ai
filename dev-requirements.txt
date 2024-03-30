@@ -8,3 +8,5 @@ netlify_py
 openai
 claude
 groq
+httpx
+ollama
