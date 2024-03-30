@@ -1,6 +1,7 @@
 import os
 from playwright.sync_api import sync_playwright, TimeoutError
 from markdownify import markdownify as md
+from pdfminer.high_level import extract_text
 
 from src.config import Config
 from src.state import AgentState
@@ -59,3 +60,18 @@ class Browser:
         self.page.pdf(path=save_path)        
         
         return save_path
+    
+    def extract_text(self):
+        return self.page.evaluate("() => document.body.innerText")  
+
+    def pdf_to_text(self, pdf_path):
+        return extract_text(pdf_path).strip()
+
+    def get_content(self):
+        pdf_path = self.get_pdf()
+        return self.pdf_to_text(pdf_path)
+    
+    def close(self):
+        self.page.close()
+        self.browser.close()
+        self.playwright.stop()
