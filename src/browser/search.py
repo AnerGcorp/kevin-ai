@@ -1,5 +1,6 @@
 import requests
 from src.config import Config
+from duckduckgo_search import DDGS
 
 class BingSearch:
     def __init__(self):
@@ -48,3 +49,17 @@ class GoogleSearch:
         if 'items' in self.query_result:
             item = self.query_result['items'][0]['link']
         return item
+
+class DuckDuckGoSearch:
+    def __init__(self):
+        self.query_result = None
+        
+    def search(self, query):
+        try:
+            self.query_result = DDGS().text(query, max_results=5)
+            return self.query_result
+        except Exception as err:
+            print(err)
+
+    def get_first_link(self):
+        return self.query_result[0]["href"]
