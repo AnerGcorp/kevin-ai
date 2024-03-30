@@ -30,6 +30,9 @@ class Config:
     
     def get_gemini_api_key(self):
         return environ.get("GEMINI_API_KEY", self.config["API_KEYS"]["GEMINI"])
+    
+    def get_groq_api_key(self):
+        return environ.get("GROQ_API_KEY", self.config["API_KEYS"]["GROQ"])
 
     def get_netlify_api_key(self):
         return environ.get("NETLIFY_API_KEY", self.config["API_KEYS"]["NETLIFY"])
@@ -77,6 +80,10 @@ class Config:
 
     def set_gemini_api_key(self, key):
         self.config["API_KEYS"]["GEMINI"] = key
+        self.save_config()
+
+    def set_groq_api_key(self, key):
+        self.config["API_KEYS"]["GROQ"] = key
         self.save_config()
 
     def set_netlify_api_key(self, key):
