@@ -22,7 +22,7 @@
 ## planner [v]
 ## researcher [v]
 ## formatter [v]
-## coder []
+## coder [v]
 ## action []
 ## internal_monologue []
 ## answer []
