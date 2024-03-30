@@ -24,7 +24,7 @@
 ## formatter [v]
 ## coder [v]
 ## action [v]
-## internal_monologue []
+## internal_monologue [v]
 ## answer []
 ## runner []
 ## feature []
