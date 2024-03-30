@@ -16,3 +16,4 @@ pdfminer
 markdown
 xhtml2pdf
 jinja2
+keybert
