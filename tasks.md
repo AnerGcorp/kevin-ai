@@ -23,7 +23,7 @@
 ## researcher [v]
 ## formatter [v]
 ## coder [v]
-## action []
+## action [v]
 ## internal_monologue []
 ## answer []
 ## runner []
