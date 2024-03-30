@@ -1,4 +1,4 @@
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright, TimeoutError
 
 class Browser:
     def __init__(self):
@@ -9,3 +9,11 @@ class Browser:
 
     def new_page(self):
         return self.browser.new_page()
+    
+    def go_to(self, url):
+        try:
+            self.page.goto(url, timeout=30000)
+        except TimeoutError as e:
+            print(f"TimeoutError: {e} when trying to navigate to {url}")
+            return False
+        return True
