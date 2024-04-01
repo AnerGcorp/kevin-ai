@@ -155,3 +155,12 @@ def token_usage():
 def real_time_logs():
     log_file = logger.read_log_file()
     return jsonify({"logs": log_file})
+
+@app.route("/api/settings", methods=["POST"])
+@route_logger(logger)
+def set_settings():
+    data = request.json
+    print("Data: ", data)
+    config.config.update(data)
+    config.save_config()
+    return jsonify({"message": "Settings updated"})
