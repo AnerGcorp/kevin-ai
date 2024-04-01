@@ -43,3 +43,11 @@ logger = Logger()
 def test_connect(data):
     print("Socket connected :: ", data)
     emit_agent("socket_response", {"data": "Server Connected"})
+
+@app.route("/api/data", methods=["GET"])
+@route_logger(logger)
+def data():
+    project = manager.get_project_list()
+    models = LLM().list_models()
+    search_engines = ["Bing", "Google", "DuckDuckGo"]
+    return jsonify({"projects": project, "models": models, "search_engines": search_engines})
