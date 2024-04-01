@@ -90,3 +90,11 @@ def is_agent_active():
     project_name = data.get("project_name")
     is_active = AgentState.is_agent_active(project_name)
     return jsonify({"is_active": is_active})
+
+@app.route("/api/get-agent-state", methods=["POST"])
+@route_logger(logger)
+def get_agent_state():
+    data = request.json
+    project_name = data.get("project_name")
+    agent_state = AgentState.get_latest_state(project_name)
+    return jsonify({"state": agent_state})
