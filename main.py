@@ -170,3 +170,7 @@ def set_settings():
 def get_settings():
     configs = config.get_config()
     return jsonify({"settings": configs})
+
+if __name__ == "__main__":
+    logger.info("Kevin is up and running!")
+    socketio.run(app, debug=False, port=2122, host="0.0.0.0")
