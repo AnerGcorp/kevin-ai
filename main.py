@@ -58,3 +58,27 @@ def get_messages():
     project_name = data.get("project_name")
     messages = manager.get_messages(project_name)
     return jsonify({"messages": messages})
+
+@socketio.on('user-message')
+def handle_message(data):
+    action = data.get('action')
+    message = data.get('message')
+    base_model = data.get('base_model')
+    project_name = data.get('project_name')
+    search_engine = data.get('search_engine').lower()
+
+    agent = Agent(base_model=base_model, search_engine=search_engine)
+
+    if action == 'continue':
+        new_message = manager.new_message()
+        new_message['message'] = message
+        new_message['from_kevin'] = False
+        manager.add_message_to_project(project_name, new_message)
+
+        if AgentState.is_agent_completed(project_name):
+            thread = Thread(target=lambda: agent.subsequent_execute(message, project_name))
+            thread.start()
+
+    if action == 'execute_agent':
+        thread = Thread(target=lambda: agent.execute(message, project_name, search_engine))
+        thread.start()
