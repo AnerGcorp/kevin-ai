@@ -126,3 +126,12 @@ def get_terminal_session():
     else:
         terminal_state = agent_state["terminal_session"]
         return jsonify({"terminal_state": terminal_state})
+    
+@app.route("/api/run-code", methods=["POST"])
+@route_logger(logger)
+def run_code():
+    data = request.json
+    project_name = data.get("project_name")
+    code = data.get("code")
+    # to-do implement code execution with subprocesses
+    return jsonify({"message": "Code execution started"})
