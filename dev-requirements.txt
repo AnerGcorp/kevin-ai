@@ -18,3 +18,4 @@ xhtml2pdf
 jinja2
 keybert
 flask_socketio
+eventlet
