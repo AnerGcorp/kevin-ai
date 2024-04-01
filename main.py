@@ -82,3 +82,11 @@ def handle_message(data):
     if action == 'execute_agent':
         thread = Thread(target=lambda: agent.execute(message, project_name, search_engine))
         thread.start()
+
+@app.route("/api/is-agent-active", methods=["POST"])
+@route_logger(logger)
+def is_agent_active():
+    data = request.json
+    project_name = data.get("project_name")
+    is_active = AgentState.is_agent_active(project_name)
+    return jsonify({"is_active": is_active})
