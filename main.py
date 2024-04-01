@@ -98,3 +98,9 @@ def get_agent_state():
     project_name = data.get("project_name")
     agent_state = AgentState.get_latest_state(project_name)
     return jsonify({"state": agent_state})
+
+@app.route("/api/get-browser-snapshot", methods=["GET"])
+@route_logger(logger)
+def browser_snapshot():
+    snapshot_path = request.args.get("snapshot_path")
+    return send_file(snapshot_path, as_attachment=True)
