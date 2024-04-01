@@ -135,3 +135,11 @@ def run_code():
     code = data.get("code")
     # to-do implement code execution with subprocesses
     return jsonify({"message": "Code execution started"})
+
+@app.route("/api/calculate-tokens", methods=["POST"])
+@route_logger(logger)
+def calculate_tokens():
+    data = request.json
+    prompt = data.get("prompt")
+    tokens = len(TIKTOKEN_ENC.encode(prompt))
+    return jsonify({"token_usage": tokens})
