@@ -164,3 +164,9 @@ def set_settings():
     config.config.update(data)
     config.save_config()
     return jsonify({"message": "Settings updated"})
+
+@app.route("/api/settings", methods=["GET"])
+@route_logger(logger)
+def get_settings():
+    configs = config.get_config()
+    return jsonify({"settings": configs})
