@@ -51,3 +51,10 @@ def data():
     models = LLM().list_models()
     search_engines = ["Bing", "Google", "DuckDuckGo"]
     return jsonify({"projects": project, "models": models, "search_engines": search_engines})
+
+@app.route("/api/messages", methods=["POST"])
+def get_messages():
+    data = request.json
+    project_name = data.get("project_name")
+    messages = manager.get_messages(project_name)
+    return jsonify({"messages": messages})
