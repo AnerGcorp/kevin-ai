@@ -150,3 +150,8 @@ def token_usage():
     project_name = request.args.get("project_name")
     token_count = AgentState.get_latest_token_usage(project_name)
     return jsonify({"token_usage": token_count})
+
+@app.route("/api/logs", methods=["GET"])
+def real_time_logs():
+    log_file = logger.read_log_file()
+    return jsonify({"logs": log_file})
