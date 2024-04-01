@@ -4,7 +4,7 @@ import zipfile
 from datetime import datetime
 from typing import Optional
 from sqlmodel import Field, Session, SQLModel, create_engine
-
+from src.socket_instance import emit_agent
 from src.config import Config
 
 class Projects(SQLModel, table=True):
@@ -59,12 +59,14 @@ class ProjectManager:
     def add_message_from_kevin(self, project: str, message: str):
         new_message = self.new_message()
         new_message["message"] = message
+        emit_agent("server-message", {"messages": new_message})
         self.add_message_to_project(project, new_message)
         
     def add_message_from_user(self, project: str, message: str):
         new_message = self.new_message()
         new_message["message"] = message
         new_message["from_kevin"] = False
+        emit_agent("server-message", {"messages": new_message})
         self.add_message_to_project(project, new_message)
 
     def get_messages(self, project: str):
