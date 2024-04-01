@@ -115,3 +115,14 @@ def get_browser_session():
     else:
         browser_session = agent_state["browser_session"]
         return jsonify({"session": browser_session})
+    
+@app.route("/api/get-terminal-session", methods=["GET"])
+@route_logger(logger)
+def get_terminal_session():
+    project_name = request.args.get("project_name")
+    agent_state = AgentState.get_latest_state(project_name)
+    if not agent_state:
+        return jsonify({"terminal_state": None})
+    else:
+        terminal_state = agent_state["terminal_session"]
+        return jsonify({"terminal_state": terminal_state})
