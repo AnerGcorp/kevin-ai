@@ -104,3 +104,14 @@ def get_agent_state():
 def browser_snapshot():
     snapshot_path = request.args.get("snapshot_path")
     return send_file(snapshot_path, as_attachment=True)
+
+@app.route("/api/get-browser-session", methods=["GET"])
+@route_logger(logger)
+def get_browser_session():
+    project_name = request.args.get("project_name")
+    agent_state = AgentState.get_latest_state(project_name)
+    if not agent_state:
+        return jsonify({"session": None})
+    else:
+        browser_session = agent_state["browser_session"]
+        return jsonify({"session": browser_session})
